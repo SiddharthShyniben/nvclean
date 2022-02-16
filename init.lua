@@ -1,3 +1,5 @@
+require('impatient')
+
 local prequire = require('nvclean.util').prequire
 
 local configs = {
