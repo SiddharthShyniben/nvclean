@@ -1,4 +1,4 @@
-local prequire = (require('nvclean.util').prequire)
+local prequire = require('nvclean.util').prequire
 
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -16,6 +16,13 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
+vim.cmd [[
+	augroup packer_user_config
+	  autocmd!
+	  autocmd BufWritePost plugins.lua source <afile> | PackerSync
+	augroup end
+]]
+
 return packer.startup({
 	function(use)
 		-- packer managing itself
@@ -23,6 +30,15 @@ return packer.startup({
 		
 		-- faster modules
 		use 'lewis6991/impatient.nvim'
+		
+		-- colorscheme
+		use {
+			'folke/tokyonight.nvim',
+			config = function()
+				vim.g.tokyonight_style = "night"
+				vim.cmd [[colorscheme tokyonight]]
+			end
+		}
 
 		if packer_bootstrap then
 			packer.sync()
