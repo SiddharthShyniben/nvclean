@@ -16,9 +16,7 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-local packerConf = {}
-
-return packer.startup(
+return packer.startup({
 	function(use)
 		-- packer managing itself
 		use 'wbthomason/packer.nvim'
@@ -39,4 +37,4 @@ return packer.startup(
 			end
 		}
 	}
-)
+})
