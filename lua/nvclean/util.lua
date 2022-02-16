@@ -1,10 +1,10 @@
-function firstLine(str)
+local function firstLine(str)
 	for line in str:gmatch("([^\n]*)\n?") do
 		return line
 	end
 end
 
-function prequire(name)
+local function prequire(name)
 	local status, lib = pcall(require, name)
 	if (status) then return lib end
 
@@ -14,5 +14,6 @@ function prequire(name)
 end
 
 return {
-	prequire = prequire
+	prequire = prequire,
+	firstLine = firstLine
 }
