@@ -1,5 +1,5 @@
 local vimp = require 'vimp'
-local wk = require 'whichkey'
+local wk = require 'which-key'
 
 vim.g.mapleader = ' '
 
