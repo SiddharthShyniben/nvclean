@@ -40,6 +40,9 @@ return packer.startup({
 			end
 		}
 
+		-- vim utilities
+		use 'svermeulen/vimpeccable'
+
 		if packer_bootstrap then
 			packer.sync()
 		end
