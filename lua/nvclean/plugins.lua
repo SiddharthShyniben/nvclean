@@ -40,8 +40,19 @@ return packer.startup({
 			end
 		}
 
-		-- vim utilities
+		-- keymap utilities
 		use 'svermeulen/vimpeccable'
+		use {
+				"folke/which-key.nvim",
+				config = function()
+						require("which-key").setup {
+								plugins = {
+										spelling = {enabled = true}
+								},
+								-- TODO: operators for comment
+						}
+				end
+		}
 
 		if packer_bootstrap then
 			packer.sync()
@@ -51,7 +62,7 @@ return packer.startup({
 		display = {
 			open_fn = function()
 				return prequire('packer.util').float({
-					border = 'rounded', style = 'minimal'
+					style = 'minimal'
 				})
 			end
 		}
