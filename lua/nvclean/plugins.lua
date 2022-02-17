@@ -1,3 +1,5 @@
+local plugins = require 'nvclean.plugin-conf'
+
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -9,8 +11,8 @@ vim.cmd [[packadd packer.nvim]]
 
 vim.cmd [[
 	augroup packer_user_config
-	  autocmd!
-	  autocmd BufWritePost plugins.lua source <afile> | PackerSync
+		autocmd!
+		autocmd BufWritePost plugins.lua source <afile> | PackerSync
 	augroup end
 ]]
 
@@ -18,33 +20,18 @@ return require('packer').startup({
 	function(use)
 		-- packer managing itself
 		use 'wbthomason/packer.nvim'
-		
+
 		-- faster modules
 		use 'lewis6991/impatient.nvim'
-		
+
 		-- colorscheme
-		use {
-			'folke/tokyonight.nvim',
-			config = function()
-				vim.g.tokyonight_style = "night"
-				vim.cmd [[colorscheme tokyonight]]
-			end
-		}
+		use(plugins.tokyonight)
 
 		-- keymap utilities
 		use 'svermeulen/vimpeccable'
-		use {
-				"folke/which-key.nvim",
-				config = function()
-						require("which-key").setup {
-								plugins = {
-										spelling = {enabled = true}
-								},
-								-- TODO: operators for comment
-						}
-				end
-		}
-
+		use(plugins.whichkey)
+		-- ui
+		use(plugins.lualine)
 		if packer_bootstrap then
 			packer.sync()
 		end
