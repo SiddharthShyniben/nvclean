@@ -1,5 +1,3 @@
-local firstLine = require('nvclean.util').firstLine
-
 local function set(x)
 	local ok, e = pcall(vim.cmd, 'set ' .. x)
 	if ok then
