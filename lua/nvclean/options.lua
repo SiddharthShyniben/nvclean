@@ -5,7 +5,7 @@ local function set(x)
 	if ok then
 		return true
 	else
-		print('Could not set ' .. x .. ' because ' .. firstLine(e))
+		print('Could not set ' .. x .. ' because ' .. e)
 		return false
 	end
 end
